@@ -1,0 +1,17 @@
+{
+    "name": "fastd/cors-provider",
+    "authors": [
+        {
+            "name": "JanHuang",
+            "email": "bboyjanhuang@gmail.com"
+        }
+    ],
+    "require": {
+        "PHP": ">=5.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "FastD\\CORS\\": "src"
+        }
+    }
+}
