@@ -7,7 +7,7 @@
  * @see      http://www.fast-d.cn/
  */
 
-namespace FastD\CORS;
+namespace FastD\CORSProvider;
 
 
 use FastD\Middleware\DelegateInterface;
