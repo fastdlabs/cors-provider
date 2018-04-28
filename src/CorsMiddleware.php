@@ -9,7 +9,6 @@
 
 namespace FastD\CORSProvider;
 
-
 use FastD\Http\Response;
 use FastD\Middleware\DelegateInterface;
 use FastD\Middleware\Middleware;
@@ -20,7 +19,8 @@ class CorsMiddleware extends Middleware
 {
     /**
      * @param ServerRequestInterface $request
-     * @param DelegateInterface $next
+     * @param DelegateInterface      $next
+     *
      * @return ResponseInterface
      */
     public function handle(ServerRequestInterface $request, DelegateInterface $next)

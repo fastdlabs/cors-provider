@@ -7,7 +7,7 @@
 return [
     'allow_credentials' => true,
     'origins' => ['*'],
-    'methods' => ['GET', 'POST', 'HEAD', 'DELETE', 'PATCH', 'PUT',],
+    'methods' => ['GET', 'POST', 'HEAD', 'DELETE', 'PATCH', 'PUT'],
     'headers' => ['*'],
     'exposed_headers' => [],
     'max_age' => null,

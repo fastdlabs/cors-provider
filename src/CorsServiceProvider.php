@@ -9,7 +9,6 @@
 
 namespace FastD\CORSProvider;
 
-
 use FastD\Container\Container;
 use FastD\Container\ServiceProviderInterface;
 use FastD\Http\Response;
@@ -19,6 +18,7 @@ class CorsServiceProvider implements ServiceProviderInterface
 {
     /**
      * @param Container $container
+     *
      * @return mixed
      */
     public function register(Container $container)
@@ -27,8 +27,9 @@ class CorsServiceProvider implements ServiceProviderInterface
             if (!app()->get('cors')->validatePreflightRequest($request)) {
                 return new Response('Cors Request Not Allowed.', Response::HTTP_FORBIDDEN);
             }
+
             return app()->get('cors')->handlePreflightRequest($request);
         });
-        $container->add('cors', new Cors(load(app()->getPath() . '/config/cors.php')));
+        $container->add('cors', new Cors(load(app()->getPath().'/config/cors.php')));
     }
 }

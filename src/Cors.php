@@ -19,6 +19,7 @@ class Cors
 
     /**
      * Cors constructor.
+     *
      * @param array $config
      */
     public function __construct(array $config)
@@ -28,6 +29,7 @@ class Cors
 
     /**
      * @param ServerRequest $request
+     *
      * @return bool
      */
     public function isCorsRequest(ServerRequest $request)
@@ -41,6 +43,7 @@ class Cors
 
     /**
      * @param ServerRequest $request
+     *
      * @return bool
      */
     public function isOriginAllowed(ServerRequest $request)
@@ -56,7 +59,8 @@ class Cors
 
     /**
      * @param ServerRequest $request
-     * @param Response $response
+     * @param Response      $response
+     *
      * @return Response
      */
     public function addActualRequestHeaders(ServerRequest $request, Response $response)
@@ -94,6 +98,7 @@ class Cors
 
     /**
      * @param ServerRequest $request
+     *
      * @return bool
      */
     public function isPreflightRequest(ServerRequest $request)
@@ -103,11 +108,14 @@ class Cors
 
     /**
      * @param ServerRequest $request
+     *
      * @return bool
      */
     public function validatePreflightRequest(ServerRequest $request)
     {
-        if (false === array_search($request->getHeader('access_control_request_method')[0], $this->config['methods'], true)) {
+        $flag = array_search($request->getHeader('access_control_request_method')[0], $this->config['methods'], true);
+
+        if (false === $flag) {
             return false;
         }
 
@@ -124,6 +132,7 @@ class Cors
 
     /**
      * @param ServerRequest $request
+     *
      * @return Response
      */
     public function handlePreflightRequest(ServerRequest $request)
@@ -149,6 +158,7 @@ class Cors
 
     /**
      * @param ServerRequest $request
+     *
      * @return string
      */
     protected function getRequestSchemeAndHttpHost(ServerRequest $request)
@@ -156,7 +166,7 @@ class Cors
         $scheme = $request->getUri()->getScheme();
         $port = $request->getUri()->getPort();
 
-        $return = "{$scheme}://" . $request->getUri()->getHost();
+        $return = "{$scheme}://".$request->getUri()->getHost();
 
         if (('http' === $scheme && 80 !== $port) || ('https' === $scheme && 443 !== $port)) {
             $return .= ":{$port}";
@@ -167,16 +177,17 @@ class Cors
 
     /**
      * @param array $config
+     *
      * @return array
      */
     protected function formatConfig(array $config)
     {
         return [
-            'allow_credentials' => (bool)($config['allow_credentials'] ?? true),
-            'origins' => (array)($config['origins'] ?? '*'),
-            'methods' => (array)($config['methods'] ?? ['GET', 'POST', 'HEAD', 'DELETE', 'PATCH', 'PUT']),
-            'headers' => (array)($config['headers'] ?? '*'),
-            'exposed_headers' => (array)($config['exposed_headers'] ?? []),
+            'allow_credentials' => (bool) ($config['allow_credentials'] ?? true),
+            'origins' => (array) ($config['origins'] ?? '*'),
+            'methods' => (array) ($config['methods'] ?? ['GET', 'POST', 'HEAD', 'DELETE', 'PATCH', 'PUT']),
+            'headers' => (array) ($config['headers'] ?? '*'),
+            'exposed_headers' => (array) ($config['exposed_headers'] ?? []),
             'max_age' => $config['max_age'] ?? null,
         ];
     }
