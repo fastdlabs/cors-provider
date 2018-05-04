@@ -16,7 +16,7 @@ return [
     'origins' => ['*'],
     'methods' => ['GET', 'POST', 'HEAD', 'DELETE', 'PATCH', 'PUT'],
     'headers' => ['*'],
-    'exposed_headers' => [],
+    'exposed_headers' => ['x-custom'],
     'max_age' => null,
 ];
 
@@ -69,7 +69,7 @@ Content-Type: application/json; charset=UTF-8
 Access-Control-Allow-Credentials: true
 Access-Control-Allow-Origin: http://127.0.0.1:8889
 Vary: Origin
-Access-Control-Expose-Headers: mother-fuck,shit
+Access-Control-Expose-Headers: x-custom
 
 {"foo":"bar"}
 ```
