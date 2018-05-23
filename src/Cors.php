@@ -67,7 +67,7 @@ class Cors
     {
         // setting Access-Control-Allow-Credentials
         $response->withAddedHeader(
-            'Access-Control-Allow-Credentials',
+            'access-control-allow-credentials',
             $this->config['allow_credentials'] ? 'true' : 'false'
         );
 
@@ -103,7 +103,7 @@ class Cors
      */
     public function isPreflightRequest(ServerRequest $request)
     {
-        return 'OPTIONS' === $request->getMethod() && $request->hasHeader('access-control-request-method');
+        return 'OPTIONS' === $request->getMethod() && $request->hasHeader('access_control_request_method');
     }
 
     /**
