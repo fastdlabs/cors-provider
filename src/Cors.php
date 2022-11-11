@@ -38,7 +38,7 @@ class Cors
             return false;
         }
 
-        return $request->getHeader('origin')[0] === $this->getRequestSchemeAndHttpHost($request);
+        return $request->getHeader('origin')[0] !== $this->getRequestSchemeAndHttpHost($request);
     }
 
     /**
